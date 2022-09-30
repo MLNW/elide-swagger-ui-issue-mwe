@@ -1,0 +1,33 @@
+server.servlet.context-path: /
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1
+    username: root
+    password: ""
+    driver-class-name: org.h2.Driver
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
+      # Ensures table names are created as they are named and not lower case by default
+      naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      jdbc:
+        use_scrollable_resultset: true
+
+elide:
+  json-api:
+    path: /api/v1
+    enabled: true
+  graphql:
+    path: /graphql/api/v1
+    enabled: true
+  swagger:
+    path: /doc
+    enabled: true
+
+security:
+  origin: "*"
+
+debug: false
